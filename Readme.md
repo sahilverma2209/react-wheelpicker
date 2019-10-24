@@ -25,7 +25,7 @@ import WheelPicker from 'react-wheelpicker'
 ## Example:
 
 ```js
-import DateOrTimeSelector from '../node_modules/react-datetime-selector/dist/index'
+import WheelPicker from 'react-wheelpicker'
 
 class App extends React.Component {
     constructor(){
