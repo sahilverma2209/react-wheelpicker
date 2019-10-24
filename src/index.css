@@ -1,6 +1,5 @@
 .scroll-select-container{
     position: relative;
-    flex: 1; 
     height: 100%;
 }
 
@@ -15,9 +14,7 @@
 .scroll-select-list{
     display:flex;
     flex-direction: column;
-    height: 100%;
     overflow-y: scroll;
-    padding-bottom: 37%;
     color: rgb(187, 187, 187);
     position: relative;
 }

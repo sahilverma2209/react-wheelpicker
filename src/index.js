@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './index.css'
+
 class WheelPicker extends React.Component {
     constructor(){
         super()
@@ -113,9 +115,9 @@ class WheelPicker extends React.Component {
 
     render(){
         return(
-            <div className="scroll-select-container">
+            <div className="scroll-select-container" style={{ height: this.props.parentHeight+"px"}}>
                 <div className="scroll-selector-area" style={{ height: this.props.height+"px", top: `${(this.props.parentHeight/2)-(this.props.height/2)}px` }}></div>
-                <div className="scroll-select-list" id={this.props.scrollerId} style={{ height: this.props.height+"px", paddingTop: `${(this.props.parentHeight/2)-(this.props.height/2)}px`,  paddingBottom: `${(this.props.parentHeight/2)-(this.props.height/2)}px`}}>
+                <div className="scroll-select-list" id={this.props.scrollerId} style={{ minHeight: this.props.height+"px", maxHeight: this.props.height+"px", paddingTop: `${(this.props.parentHeight/2)-(this.props.height/2)}px`,  paddingBottom: `${(this.props.parentHeight/2)-(this.props.height/2)}px`}}>
                     {this.renderListItems()}
                 </div>
             </div>
