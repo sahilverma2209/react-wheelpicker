@@ -1,5 +1,5 @@
-# react-datetime-selector
-A simple Calendar and Time picker component which lets user pick Date/Time through a visual interface.
+# react-wheelpicker
+A simple React component which brings iOS-like wheelpicker to the web!
 
 Find the [Demo here](https://sahilverma2209.github.io/react-wheelpicker/)
 
