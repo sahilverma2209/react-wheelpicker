@@ -1,0 +1,44 @@
+.scroll-select-container{
+    position: relative;
+    flex: 1; 
+    height: 100%;
+}
+
+.scroll-selector-area{
+    position: absolute;
+    border-top: 1px solid #ebeefa;
+    border-bottom: 1px solid #ebeefa;
+    width: 100%;
+    z-index: -1;
+}
+
+.scroll-select-list{
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 37%;
+    color: rgb(187, 187, 187);
+    position: relative;
+}
+
+.scroll-select-list::-webkit-scrollbar { width: 0 !important }
+
+.scroll-item{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* padding: 10px; */
+}
+
+.scroll-item:hover{
+    cursor: pointer;
+}
+
+.selected-time{
+    color: rgb(29, 29, 29);
+    font-weight: bold;
+    transition: all 0.2s ;
+    color: rgb(50, 50, 50);
+}
