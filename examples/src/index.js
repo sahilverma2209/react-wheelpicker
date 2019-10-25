@@ -24,7 +24,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
             <div className="demo-container">
-                <div className="picker-container"><span className="anim"> animation = 'flat'</span><br/><br/>
+                <div className="picker-container"><center><span className="anim"> animation = 'wheel'</span></center><br/>
                     <div className="selected" onClick={() => this.setState({ picker1Open: !this.state.picker1Open})}>{this.state.selection}</div>
                     {this.state.picker1Open &&
                         <div className="picker-1">
@@ -36,12 +36,12 @@ class App extends React.Component {
                             parentHeight={250}
                             updateSelection={selectedIndex => this.setState({ selection: this.state.data[selectedIndex], defaultSelection: selectedIndex })}
                             scrollerId="scroll-select-subject"
-                            animation="flat"
+                            animation="wheel"
                         />
                         </div>
                     }
                 </div>
-                <div className="picker-container"><span className="anim">animation = 'wheel'</span> <br/><br/>
+                <div className="picker-container"><center><span className="anim">animation = 'flat'</span></center> <br/>
                     <div className="selected" onClick={() => this.setState({ picker2Open: !this.state.picker2Open})}>{this.state.selection2}</div>
                     {this.state.picker2Open &&
                         <div className="picker-2">
@@ -53,7 +53,7 @@ class App extends React.Component {
                             parentHeight={250}
                             updateSelection={selectedIndex => this.setState({ selection2: this.state.data[selectedIndex], defaultSelection2: selectedIndex })}
                             scrollerId="scroll-select-subject-2"
-                            animation="wheel"
+                            animation="flat"
                         />
                         </div>
                     }

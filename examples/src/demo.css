@@ -46,3 +46,19 @@
 .selected:hover{
     cursor: pointer;
 }
+
+@media all and (max-width: 768px) {
+    .demo-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100vw;
+        margin: 20px auto;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .picker-container{
+        height: 400px;
+    }
+
+}
