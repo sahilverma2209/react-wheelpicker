@@ -33,7 +33,7 @@ class App extends React.Component {
                             height={50}
                             fontSize={15}
                             defaultSelection={this.state.defaultSelection}
-                            parentHeight={250}
+                            parentHeight={150}
                             updateSelection={selectedIndex => this.setState({ selection: this.state.data[selectedIndex], defaultSelection: selectedIndex })}
                             scrollerId="scroll-select-subject"
                             animation="wheel"
@@ -48,7 +48,7 @@ class App extends React.Component {
                         <WheelPicker
                             data={this.state.data}
                             height={50}
-                            fontSize={15}
+                            fontSize={13}
                             defaultSelection={this.state.defaultSelection2}
                             parentHeight={250}
                             updateSelection={selectedIndex => this.setState({ selection2: this.state.data[selectedIndex], defaultSelection2: selectedIndex })}
