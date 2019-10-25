@@ -5,9 +5,9 @@
 
 .scroll-selector-area{
     position: absolute;
-    border-top: 1px solid #ebeefa;
-    border-bottom: 1px solid #ebeefa;
-    width: 100%;
+    border-top: 1px solid rgb(197, 197, 197);
+    border-bottom: 1px solid rgb(197, 197, 197);
+    width: 99%;
     z-index: -1;
 }
 
@@ -17,16 +17,26 @@
     overflow-y: scroll;
     color: rgb(187, 187, 187);
     position: relative;
+    perspective: 1000px;
 }
 
 .scroll-select-list::-webkit-scrollbar { width: 0 !important }
+
 
 .scroll-item{
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* padding: 10px; */
+    /* text-align: right; */
+    padding-right: 10px;
+    margin: 0 auto;
+    width: 100%; 
+}
+
+.wheel-item{
+    background: rgb(249, 249, 249);
+    border: 1px solid rgb(177, 177, 177);
 }
 
 .scroll-item:hover{

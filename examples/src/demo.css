@@ -1,8 +1,31 @@
 .demo-container{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 50px auto;
+    font-family: 'Lato', sans-serif;
+}
+
+.anim{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.picker-1{
+    display: flex;
     width: 250px;
-    border: 1px solid rgb(216, 216, 216);
+    /* border: 1px solid rgb(216, 216, 216); */
     border-radius: 4px;
-    margin: auto;
+    margin: auto;  
+    font-family: 'Lato', sans-serif;
+}
+
+.picker-2{
+    display: flex;
+    width: 250px;
+    /* border: 1px solid rgb(216, 216, 216); */
+    border-radius: 4px;
+    margin: auto;  
+    font-family: 'Lato', sans-serif;
 }
 
 .selected{
@@ -11,12 +34,13 @@
     border-radius: 4px;
     margin: auto;
     height: 20px;
-    font-size: 13px;
+    font-size: 15px;
     height: 40px;
     display: flex;
     padding: 0px 5px;
     flex-direction: column;
     justify-content: center;
+    font-family: 'Lato', sans-serif;
 }
 
 .selected:hover{

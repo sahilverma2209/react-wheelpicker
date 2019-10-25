@@ -1,6 +1,6 @@
 {
   "name": "react-wheelpicker",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple React component which brings wheelpicker to the web!",
   "repository": {
     "type": "git",
@@ -18,10 +18,14 @@
   },
   "keywords": [
     "wheelpicker",
+    "npm wheelpicker",
+    "wheelpicker web",
+    "npm wheelpicker web",
     "scroll picker",
     "scroll",
     "select",
     "ios picker",
+    "ios picker web",
     "react picker",
     "react"
   ],

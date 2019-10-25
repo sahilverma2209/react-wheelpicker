@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './index.css'
+import { applyStyle } from './applyStyle'
 
 class WheelPicker extends React.Component {
     constructor(){
@@ -11,39 +12,42 @@ class WheelPicker extends React.Component {
     }
 
     componentDidMount(){
-        const height = this.props.height || 40 
+        var height = this.props.height || 40 
+        height = this.props.animation === 'wheel' ? 40 : height
         var scroller = document.getElementById(this.props.scrollerId)
         scroller.addEventListener('scroll', this.handleScroll)
+
+        scroller.scroll({
+            top: 1,
+            behavior: 'smooth'
+        })
+        scroller.scroll({
+            top: 0,
+            behavior: 'smooth'
+        })
 
         // scroll to index of default selection
         var y = ((this.props.defaultSelection)*height)-1
         y = y === -1 ? 0 : y
         scroller.scroll({
-            top: y,
-            behavior: 'smooth'
+            top: y,behavior: 'smooth'
         })
-
-
-        var bottomFade = 0.66666
-        var bottomShade = this.props.defaultSelection + 1
-        for(var i=bottomShade; i< this.props.data.length; i++){
-            document.getElementById(`${this.props.scrollerId}-scroll-item--${i}`).style.transition = `all 0.3s`
-            document.getElementById(`${this.props.scrollerId}-scroll-item--${i}`).style.opacity = `${bottomFade}`
-            bottomFade -= 0.33333
-        }
 
     }
 
     handleScroll(e){ 
-        const height = this.props.height || 40 // required to calculate which item should be selected on scroll
+        var height = this.props.height || 40 // required to calculate which item should be selected on scroll
+        height = this.props.animation === 'wheel' ? 40 : height 
 
         //if there is already a timeout in process cancel it
         if(this._scrollTimer) clearTimeout(this._scrollTimer) 
         
         var scroll = e.srcElement.scrollTop // scroll value
+        console.log(scroll)
 
         // itemInSelectorArea height of area available to scroll / height of individual item
         var itemInSelectorArea = parseInt((scroll+(height/2))/height, 10)  // add (height/2) to adjust error
+        // this.props.updateSelection(itemInSelectorArea)
         
         if(itemInSelectorArea < this.props.data.length){
             document.getElementById(`${this.props.scrollerId}-scroll-item--${itemInSelectorArea}`).classList.add('selected-time')
@@ -68,42 +72,27 @@ class WheelPicker extends React.Component {
             })
         } 
 
-        this._scrollTimer = setTimeout(() => finishedScrolling(height, this.props.scrollerId, this.props.updateSelection), 100)
+        this._scrollTimer = setTimeout(() => finishedScrolling(height, this.props.scrollerId, this.props.updateSelection), 60)
 
-        // color fade
-        var topShade = itemInSelectorArea 
-        var topFade = 1
-
-        while(topShade >= 0){
-            // console.log('shading')
-            document.getElementById(`${this.props.scrollerId}-scroll-item--${topShade}`).style.transition = `all 0.3s`
-            document.getElementById(`${this.props.scrollerId}-scroll-item--${topShade}`).style.opacity = `${topFade}`
-            topFade -= 0.333333
-
-            topShade--
-        }
-
-        var bottomFade = 0.66666
-        var bottomShade = itemInSelectorArea + 1
-        for(i=bottomShade; i< this.props.data.length; i++){
-            document.getElementById(`${this.props.scrollerId}-scroll-item--${i}`).style.transition = `all 0.3s`
-            document.getElementById(`${this.props.scrollerId}-scroll-item--${i}`).style.opacity = `${bottomFade}`
-            bottomFade -= 0.33333
-        }
+        applyStyle(this.props.scrollerId, itemInSelectorArea, this.props.data.length, this.props.animation)
 
     }
 
     renderListItems(){
-        const height = this.props.height || 40
+        var height = this.props.height || 40 
+        height = this.props.animation === 'wheel' ? 40 : height
         return this.props.data.map((item, index) => {
             return index === 0 ?
+            <div className="scroll-item-container" style={{ minHeight:height+'px', maxHeight: height+'px'}}>
             <div 
                 key={item} id={`${this.props.scrollerId}-scroll-item--${index}`} className="scroll-item selected-time" style={{ minHeight: height+'px', maxHeight: height+'px', fontSize: this.props.fontSize+'px' }}
                 onClick={e => document.getElementById(this.props.scrollerId).scroll({ top: 0, behavior: 'smooth'})} 
             >
                 {item}
             </div>
+            </div>
             :
+            <div className="scroll-item-container" style={{ minHeight: height+'px', maxHeight: height+'px'}}>
             <div key={item} id={`${this.props.scrollerId}-scroll-item--${index}`} className="scroll-item" style={{ minHeight: height+'px', maxHeight: height+'px', fontSize: this.props.fontSize+'px' }}
                 onClick={e => {
                     var m = e.target.id.split('--')[1]
@@ -112,17 +101,19 @@ class WheelPicker extends React.Component {
             >
                 {item}
             </div>
+            </div>
         })
     }
 
 
     render(){
-        const parentHeight = this.props.parentHeight || this.props.height*this.props.data.length || this.props.data.length*40
-        const height = this.props.height || 40
+        var height = this.props.height || 40 
+        height = this.props.animation === 'wheel' ? 40 : height
+        const parentHeight = this.props.parentHeight || height*this.props.data.length || this.props.data.length*40
         console.log(parentHeight)
         return(
             <div className="scroll-select-container" style={{ height: parentHeight+"px"}}>
-                <div className="scroll-selector-area" style={{ height: height+"px", top: `${(parentHeight/2)-(height/2)}px` }}></div>
+                <div className="scroll-selector-area" style={{ height: height+"px", top: `${(parentHeight/2)-(height/2)}px` }} id={this.props.scrollerId+"--scroll-selector-area"}></div>
                 <div className="scroll-select-list" id={this.props.scrollerId} style={{ minHeight: height+"px", maxHeight: height+"px", paddingTop: `${(parentHeight/2)-(height/2)}px`,  paddingBottom: `${(parentHeight/2)-(height/2)}px`}}>
                     {this.renderListItems()}
                 </div>

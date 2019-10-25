@@ -47,6 +47,7 @@ class App extends React.Component {
             {this.state.pickerOpen &&
                 <div className="demo-container">
                 <WheelPicker
+                    animation="wheel"
                     data={this.state.data}
                     height={40}
                     parentHeight={250}
@@ -73,23 +74,26 @@ class App extends React.Component {
 2. **data** (Array)
     * You'll need to pass an array of Strings. This array is used to render the picker options from which the user selects. 
 
-3. **height** (Number)
-    * This is the height of a single picker option. This value is used in calculating which option is currently in the selector window. Default value = 40 
+3. **animation** (String)
+    * This prop can take 2 values - *'falt'* & *'wheel'*
+    When the value = *'wheel'*, the prop *height* is forced to be = 40
 
-4. **parentHeight** (Number)
+4. **height** (Number)
+    * This is the height of a single picker option. This value is used in calculating which option is currently in the selector window. Default value = 40 (Also equal to 40 when ```animation = 'wheel'``` ) 
+
+5. **parentHeight** (Number)
     * This is the height of the WheelPicker list. This value is also used in calculating which option is currently in the selector window. 
 
     * Default value = (#items in data) * height. Therefore, if the number of items in the ```data``` prop is 10 and ```height``` of each item is 50px, then parentHeight = 10*50 = 500px
 
     * Ideal value <= (#items in data) * height
 
-5. **defaultSelection** (Number)
+6. **defaultSelection** (Number)
     * This is the **index** of the element that should be selected by default when the WheelPicker is rendered.
 
-6. **updateSelection** (Function)
+7. **updateSelection** (Function)
     * This function recieves the ```selected index``` and can be used to update the state of the component that renders the WheelPicker. Using this selected index and the data array, we can see which option the user has selected
 
-
-7. **fontSize** (Number)
+8. **fontSize** (Number)
     * This is the font size of every element in the list
 
