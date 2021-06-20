@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "core-js";
 import './index.css'
 import { applyStyle } from './applyStyle'
 
