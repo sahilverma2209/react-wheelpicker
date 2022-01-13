@@ -15,6 +15,7 @@
     display:flex;
     flex-direction: column;
     overflow-y: scroll;
+    height: 100%;
     color: rgb(187, 187, 187);
     position: relative;
     perspective: 1000px;
@@ -46,6 +47,6 @@
 .selected-time{
     color: rgb(29, 29, 29);
     font-weight: bold;
-    transition: all 0.2s ;
+    transition: all 0.3s ;
     color: rgb(50, 50, 50);
 }
