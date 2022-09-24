@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./index.css";
+//import "./index.css";
 import { applyStyle } from "./applyStyle";
 
 class WheelPicker extends React.Component {
