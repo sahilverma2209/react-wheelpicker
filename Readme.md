@@ -75,7 +75,7 @@ class App extends React.Component {
     * You'll need to pass an array of Strings. This array is used to render the picker options from which the user selects. 
 
 3. **animation** (String)
-    * This prop can take 2 values - *'falt'* & *'wheel'*
+    * This prop can take 2 values - *'flat'* & *'wheel'*
     When the value = *'wheel'*, the prop *height* is forced to be = 40
 
 4. **height** (Number)
